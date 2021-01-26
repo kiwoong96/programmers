@@ -9,9 +9,9 @@ for i in range(1,N+1):
 
 d[1] = array[1]
 d[2] = array[1] + array[2]
-d[3] = max(array[1]+array[3], array[2] + array[3])
+#d[3] = max(array[1]+array[3], array[2] + array[3])
 
-for i in range(4,N+1):
+for i in range(3,N+1):
     d[i] = max(d[i-2] + array[i], d[i-3] + array[i-1] + array[i],d[i-1])
 
 print(d[N])
