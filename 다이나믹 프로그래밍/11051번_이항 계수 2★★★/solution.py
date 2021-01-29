@@ -12,11 +12,13 @@ print(int(dp[K]))"""
 N, K = map(int,input().split())
 
 
-dp = [[0] for _ in range(1001)]
+dp = [[1] for _ in range(1001)]
 
 for i in range(1,N+1):
-    for j in range(0,N):
-        if j==0:
-            dp[i][j] = 1
-        elif j== N:
-            dp[i]
+    for j in range(1,i+1):
+        if j==i:
+            dp[i].append(1)
+        else:
+            dp[i].append(dp[i-1][j-1] + dp[i-1][j])
+
+print(dp[N][K]% 10007)
