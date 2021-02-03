@@ -12,7 +12,7 @@ dxy = [[1,0],[0,-1],[-1,0],[0,1]]
 sys.setrecursionlimit(10000)
 
 def dfs(x,y):
-    print(x,y,"dfs입장!")
+    #print(x,y,"dfs입장!")
     if x == M-1 and y == N-1:
         return 1
     elif dp[x][y] == -1:
@@ -23,9 +23,11 @@ def dfs(x,y):
                 if arr[tmp_x][tmp_y] < arr[x][y]:
 
                     dp[x][y] += dfs(tmp_x,tmp_y)
+    """
     for i in range(M):
         print(dp[i])
-    print()
+    """
+    #print()
     return dp[x][y]
 
 print(dfs(0,0))
