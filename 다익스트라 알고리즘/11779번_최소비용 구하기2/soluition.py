@@ -31,6 +31,8 @@ def dijkstra(start):
             if now == start:
                 distance[end][1].append(now)
 
+
+
             data = distance[now][0] + dist
             if distance[end][0] > data:
                 distance[end][0] = data
