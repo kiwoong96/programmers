@@ -19,19 +19,17 @@ def dijkstra(start):
     q = []
     heapq.heappush(q,(0,start,[start]))
     distance[start][0] = 0
-
+    distance[start][1].append(start)
+    #print("1. ", distance)
     while q:
         tmp = heapq.heappop(q)
-        dist, now, arr= tmp[0], tmp[1],tmp[2]
+        dist, now, arr= tmp[0], tmp[1], tmp[2]
 
         if distance[now][0] < dist:
             continue
+
         for k in graph[now]:
             end, dist = k[0], k[1]
-            if now == start:
-                distance[end][1].append(now)
-
-
 
             data = distance[now][0] + dist
             if distance[end][0] > data:
@@ -40,7 +38,7 @@ def dijkstra(start):
                 t.append(end)
                 distance[end][1] = t
                 heapq.heappush(q,(data,end,t))
-
+        #print(distance)
 
 
 dijkstra(Start)
