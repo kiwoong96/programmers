@@ -1,43 +1,36 @@
-from itertools import combinations
 import sys
+from itertools import combinations
 input = sys.stdin.readline
 INF = int(1e9)
-N,M = map(int,input().split())
 
-board = []
-
-for i in range(N):
-    board.append(list(map(int,input().split())))
-
+N, M = map(int,input().split())
 house = []
 chicken_shop = []
 
 
 for i in range(N):
-    for j in range(N):
-        if board[i][j] == 1:
+    tmp = list(map(int,input().split()))
+    for j in range(len(tmp)):
+        if tmp[j] == 1:
             house.append((i,j))
-        elif board[i][j] == 2:
+        elif tmp[j] == 2:
             chicken_shop.append((i,j))
 
-print(house)
-print(chicken_shop)
+def solution(house,chicken_shop):
+    chicken = list(combinations(chicken_shop,M))
+    result = INF
+    for c in chicken:
+        distance = [INF for _ in range(len(house))]
+        for cx,cy in c:
+            for h in range(len(house)):
+                hx, hy = house[h]
+                if distance[h] > abs(cx-hx)+abs(cy-hy):
+                    distance[h] =  abs(cx-hx)+abs(cy-hy)
 
+        if result > sum(distance):
+            result = sum(distance)
+    return result
 
-chicken_shop2 = [str(i) for i in range(len(chicken_shop))]
-comb = list(map(''.join, combinations(chicken_shop2,M)))
-print(comb)
-
-result = INF
-for i in comb:
-    arr = [INF for _ in range(len(house))]
-    for k in i:
-        x, y = chicken_shop[int(k)][0], chicken_shop[int(k)][1]
-        for j in range(len(house)):
-            if arr[j] > abs(x-house[j][0]) + abs(y-house[j][1]):
-                arr[j] = abs(x-house[j][0]) + abs(y-house[j][1])
-        print(i,k,x,y,arr)
-    if result > sum(arr):
-        result = sum(arr)
+result = solution(house,chicken_shop)
 
 print(result)
