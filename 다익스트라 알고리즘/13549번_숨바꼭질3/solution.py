@@ -7,6 +7,7 @@ N, K = map(int,input().split())
 
 distance = [INF for _ in range(200001)]
 dx = [-1,1,2]
+
 def dijkstra(start):
     q = []
     heapq.heappush(q,(0,start))
