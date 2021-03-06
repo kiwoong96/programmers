@@ -14,8 +14,12 @@ def solution(N,K):
     result = 0
     min_val = 1e9
     while q:
+
         count, N = q.popleft()
-        print(q)
+
+        if count > min_val :
+            break
+
         if N == K:
             min_val = count
             if min_val == count:
@@ -27,7 +31,7 @@ def solution(N,K):
             else:
                 now_N = N+dN[i]
 
-            if 0<=now_N<=100000 and visited[now_N] > count + 1:
+            if 0<=now_N<=100000 and visited[now_N] >= count + 1:
                 q.append((count+1,now_N))
                 visited[now_N] = count+1
 
