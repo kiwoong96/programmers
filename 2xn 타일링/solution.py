@@ -14,7 +14,7 @@ n = 4
 result  = solution(n)
 print(result)"""
 
-
+"""
 def solution(N, number):
     dp = [1e9 for _ in range(300001)]
     k = N
@@ -47,3 +47,8 @@ def solution(N, number):
 dp = solution(5,12)
 print(dp[:100])
 print(dp[12])
+"""
+stack = [1,2,3,4,5]
+
+print(stack.pop())
+
