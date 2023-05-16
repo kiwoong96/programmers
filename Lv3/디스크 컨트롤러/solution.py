@@ -13,10 +13,10 @@ def solution(jobs):
                 heapq.heappush(heap,[job[1],job[0]])
         
         if heap:
-            time, start_time = heapq.heappop(heap)
+            current = heapq.heappop(heap)
             start = now
-            now += time
-            answer += now - start_time #요청으로부터 처리시간
+            now += current[0]
+            answer += now - current[1] #요청으로부터 처리시간
             i += 1
         else:
             now += 1
